@@ -1,0 +1,11 @@
+<section class="single-post">
+    <h1>{{post.title.rendered}}</h1>
+
+    <div ng-bind-html="post.content.rendered"></div>
+
+    <ul class="post-links" ng-if="post">
+        <li><a ng-href="#/">Back to list</a></li>
+        <li ng-if="post.siblings.prev"><a ng-href="#/{{post.siblings.prev}}">Previous post</a></li>
+        <li ng-if="post.siblings.next"><a ng-href="#/{{post.siblings.next}}">Next post</a></li>
+    </ul>
+</section>
