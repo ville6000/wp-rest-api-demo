@@ -12,15 +12,23 @@ html {
     margin: 10px 0;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 480px) and (max-width: 768px) {
     .post-item {
         width: 50%;
     }
+
+    .post-item:nth-child(odd) {
+        clear: left;
+    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .post-item {
         width: 33.33333%;
+    }
+
+    .post-item:nth-child(3n + 1) {
+        clear: left;
     }
 }
 
