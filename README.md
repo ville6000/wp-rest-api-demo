@@ -8,4 +8,4 @@ Change `wpRestAPIPath` variable in `assets/js/app.js` to your WordPress Rest API
 
 ## Demo
 
-Live demo can viewed in [dev.viklund.fi/wp-api-demo](http://dev.viklund.fi/wp-rest-api/#/)
+[dev.viklund.fi/wp-api-demo](http://dev.viklund.fi/wp-rest-api/#/)
