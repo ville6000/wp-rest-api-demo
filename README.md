@@ -1,6 +1,6 @@
 # WP Rest API Demo
 
-# Installation
+## Installation
 
 Run `$ bower install`
 
