@@ -3,7 +3,7 @@
     "use strict";
 
     var wpRestAPIPath = 'http://yourdomain.to/wp-json/wp/v2/';
-    var app = angular.module('restApiDemo', ['ngSanitize', 'ngRoute']);
+    var app = angular.module('restApiDemo', ['ngSanitize', 'ngRoute', 'angularMoment']);
 
     app.config(function ($routeProvider) {
         $routeProvider
