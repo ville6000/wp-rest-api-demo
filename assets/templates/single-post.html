@@ -3,6 +3,10 @@
 
     <div ng-bind-html="post.content.rendered"></div>
 
+    <div class="meta the-date">
+        Posted: {{post.date | amDateFormat: 'YYYY-MM-DD HH:mm'}}
+    </div>
+
     <ul class="post-links" ng-if="post">
         <li><a ng-href="#/">Back to list</a></li>
         <li ng-if="post.siblings.prev"><a ng-href="#/{{post.siblings.prev}}">Previous post</a></li>
