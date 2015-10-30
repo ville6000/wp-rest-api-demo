@@ -8,10 +8,11 @@
     app.config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'assets/templates/post-list.html',
-                controller:  'PostsListController'
+                templateUrl:  'assets/templates/post-list.html',
+                controller:   'PostsListController',
+                controllerAs: 'PostListCtrl'
             })
-            .when('/:id', {
+            .when('/post/:id', {
                 templateUrl: 'assets/templates/single-post.html',
                 controller:  'PostController'
             })
@@ -42,6 +43,22 @@
      * @constructor
      */
     function PostsListController($scope, PostService) {
+        $scope.searchTerm = "";
+        $scope.posts = [];
+        $scope.resultCount = 0;
+        $scope.searchMade = false;
+
+        $scope.$watch('posts', function () {
+            $scope.postCount = $scope.posts.length;
+        }, true);
+
+        this.search = function () {
+            PostService.searchPosts($scope.searchTerm).success(function (response) {
+                $scope.searchMade = true;
+                $scope.posts = response;
+            });
+        };
+
         PostService.getPosts().success(function (response) {
             $scope.posts = response;
         });
@@ -72,6 +89,14 @@
             return $http({
                 method: 'GET',
                 url:    wpRestAPIPath + 'posts/' + id,
+                cache:  true
+            });
+        };
+
+        API.searchPosts = function (term) {
+            return $http({
+                method: 'GET',
+                url:    wpRestAPIPath + 'posts?filter[s]=' + term,
                 cache:  true
             });
         };

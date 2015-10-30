@@ -3,6 +3,7 @@ html {
 }
 
 .posts-container {
+    overflow: hidden;
     margin: 0 -15px;
 }
 
@@ -45,4 +46,16 @@ html {
 .meta {
     margin: 10px 0;
     color: #999;
+}
+
+.post-search {
+    margin: 20px 0;
+}
+
+.search-results {
+    padding: 30px 0;
+}
+
+.footer {
+    padding: 30px 0;
 }

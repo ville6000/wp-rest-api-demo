@@ -1,9 +1,21 @@
+<section class="post-search">
+    <form class="form-inline" name="search" ng-submit="PostListCtrl.search()">
+        <div class="form-group">
+            <label for="search-term" class="sr-only">
+                Search:
+            </label>
+            <input type="text" name="search-term" id="search-term" class="form-control" ng-model="searchTerm">
+        </div>
+        <button class="btn btn-info">Search</button>
+    </form>
+</section>
+
 <section class="post-list">
     <div class="posts-container">
         <div class="post-item" ng-repeat="post in posts">
             <article class="post">
                 <h1 class="post-title">
-                    <a ng-href="#/{{post.id}}">
+                    <a ng-href="#/post/{{post.id}}">
                         {{post.title.rendered}}
                     </a>
                 </h1>
@@ -12,4 +24,12 @@
             </article>
         </div>
     </div>
+</section>
+
+<section class="search-results">
+    <p class="post-count" ng-if="searchMade">
+        <ng-pluralize count="postCount"
+                      when="{'0': 'No results', '1': 'One post found', 'other': '{{postCount}} posts found'}">
+        </ng-pluralize>
+    </p>
 </section>
