@@ -1,4 +1,4 @@
-# WP Rest API Demo
+# WP Rest API 2 Demo
 
 ## Installation
 
