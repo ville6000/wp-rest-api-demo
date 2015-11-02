@@ -66,6 +66,14 @@
 
     app.controller('PostsListController', ['$scope', 'PostService', PostsListController]);
 
+    function CategoryListController($scope, TermService) {
+        TermService.getCategories().success(function (response) {
+            $scope.items = response;
+        });
+    }
+
+    app.controller('CategoryListController', ['$scope', 'TermService', CategoryListController]);
+
     /**
      * Service for posts
      *
@@ -106,5 +114,23 @@
 
     app.factory('PostService', function ($http) {
         return PostService($http, wpRestAPIPath);
+    });
+
+    function TermService($http, wpRestAPIPath) {
+        var API = {};
+
+        API.getCategories = function () {
+            return $http({
+                method: 'GET',
+                url:    wpRestAPIPath + 'terms/category',
+                cache:  true
+            });
+        };
+
+        return API;
+    }
+
+    app.factory('TermService', function($http) {
+       return TermService($http, wpRestAPIPath);
     });
 })();
