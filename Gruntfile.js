@@ -5,19 +5,19 @@ module.exports = function (grunt) {
         concat:      {
             dist_css: {
                 src:  [
-                    'src/assets/bower_components/bootstrap/dist/css/bootstrap.min.css',
-                    'src/assets/bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+                    'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                    'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
                     'src/assets/css/main.css'
                 ],
                 dest: 'dist/assets/css/styles.min.css'
             },
             dist_js:  {
                 src:  [
-                    'src/assets/bower_components/moment/min/moment.min.js',
-                    'src/assets/bower_components/angular/angular.min.js',
-                    'src/assets/bower_components/angular-route/angular-route.min.js',
-                    'src/assets/bower_components/angular-sanitize/angular-sanitize.min.js',
-                    'src/assets/bower_components/angular-moment/angular-moment.min.js'
+                    'node_modules/moment/min/moment.min.js',
+                    'node_modules/angular/angular.min.js',
+                    'node_modules/angular-route/angular-route.min.js',
+                    'node_modules/angular-sanitize/angular-sanitize.min.js',
+                    'node_modules/angular-moment/angular-moment.min.js'
                 ],
                 dest: 'dist/assets/js/vendor.min.js'
             }
