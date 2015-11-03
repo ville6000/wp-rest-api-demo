@@ -3,9 +3,9 @@
 
     angular
         .module('restApiDemo')
-        .controller('PostsSearchController', ['$scope', '$routeParams', 'PostService', PostsSearchController]);
+        .controller('CategoryPostsController', ['$scope', '$routeParams', 'PostService', CategoryPostsController]);
 
-    function PostsSearchController($scope, $routeParams, PostService) {
+    function CategoryPostsController($scope, $routeParams, PostService) {
         $scope.posts = [];
         $scope.searchMade = false;
         $scope.resultCount = 0;
@@ -15,7 +15,7 @@
             $scope.searchMade = true;
         }, true);
 
-        PostService.searchPosts($routeParams.s).then(function (response) {
+        PostService.getPostsByCategory($routeParams.slug).then(function (response) {
             $scope.posts = response.data;
         });
     }

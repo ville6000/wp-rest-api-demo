@@ -25,8 +25,8 @@
             })
             .when('/category/:slug', {
                 templateUrl:  'assets/templates/post-list.html',
-                controller:   'PostsSearchController',
-                controllerAs: 'PostListCtrl'
+                controller:   'CategoryPostsController',
+                controllerAs: 'CategoryPostsCtrl'
             })
             .otherwise('/');
     }
