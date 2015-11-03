@@ -16,6 +16,11 @@
                 templateUrl: 'assets/templates/single-post.html',
                 controller:  'PostController'
             })
+            .when('/search/:s', {
+                templateUrl:  'assets/templates/post-list.html',
+                controller:   'PostsSearchController',
+                controllerAs: 'PostSearchCtrl'
+            })
             .otherwise('/');
     });
 
@@ -43,28 +48,41 @@
      * @constructor
      */
     function PostsListController($scope, PostService) {
-        $scope.searchTerm = "";
-        $scope.posts = [];
-        $scope.resultCount = 0;
-        $scope.searchMade = false;
-
-        $scope.$watch('posts', function () {
-            $scope.postCount = $scope.posts.length;
-        }, true);
-
-        this.search = function () {
-            PostService.searchPosts($scope.searchTerm).success(function (response) {
-                $scope.searchMade = true;
-                $scope.posts = response;
-            });
-        };
-
         PostService.getPosts().success(function (response) {
             $scope.posts = response;
         });
     }
 
     app.controller('PostsListController', ['$scope', 'PostService', PostsListController]);
+
+    function PostsSearchController($scope, $routeParams, PostService) {
+        $scope.posts = [];
+        $scope.searchMade = false;
+        $scope.resultCount = 0;
+
+        $scope.$watch('posts', function () {
+            $scope.postCount = $scope.posts.length;
+            $scope.searchMade = true;
+        }, true);
+
+        PostService.searchPosts($routeParams.s).success(function (response) {
+            $scope.posts = response;
+        });
+    }
+
+    app.controller('PostsSearchController', ['$scope', '$routeParams', 'PostService', PostsSearchController]);
+
+    function SearchFormController($scope, $location) {
+        this.search = function () {
+            var searchTerm = $scope.searchTerm;
+
+            if (searchTerm !== "") {
+                $location.path('/search/' + searchTerm);
+            }
+        }
+    }
+
+    app.controller('SearchFormController', ['$scope', '$location', SearchFormController]);
 
     function CategoryListController($scope, TermService) {
         TermService.getCategories().success(function (response) {
@@ -130,7 +148,7 @@
         return API;
     }
 
-    app.factory('TermService', function($http) {
-       return TermService($http, wpRestAPIPath);
+    app.factory('TermService', function ($http) {
+        return TermService($http, wpRestAPIPath);
     });
 })();

@@ -37,7 +37,19 @@
                 <div ng-view></div>
             </div>
             <div class="col-xs-12 col-sm-3 sidebar">
-                <div class="taxonomies" ng-controller="CategoryListController as categoryListCtrl">
+                <section class="post-search" ng-controller="SearchFormController as SearchFormCtrl">
+                    <form class="form" name="search" ng-submit="SearchFormCtrl.search()">
+                        <div class="form-group">
+                            <label for="search-term" class="sr-only">
+                                Search:
+                            </label>
+                            <input type="text" name="search-term" id="search-term" class="form-control" ng-model="searchTerm">
+                        </div>
+                        <button class="btn btn-info">Search</button>
+                    </form>
+                </section>
+
+                <section class="taxonomies" ng-controller="CategoryListController as categoryListCtrl">
                     <h2>Categories</h2>
                     <ul class="taxonomy-list">
                         <li ng-repeat="item in items">
@@ -45,7 +57,7 @@
                             <span class="count">({{item.count}})</span>
                         </li>
                     </ul>
-                </div>
+                </section>
             </div>
         </div>
     </div>
