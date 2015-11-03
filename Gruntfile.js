@@ -23,10 +23,6 @@ module.exports = function (grunt) {
             }
         },
         copy:        {
-            js:        {
-                src:  'src/assets/js/app.js',
-                dest: 'dist/assets/js/app.js'
-            },
             templates: {
                 expand: true,
                 filter: 'isFile',
@@ -41,8 +37,18 @@ module.exports = function (grunt) {
                     'dist/index.html': ['src/index.html']
                 }
             }
+        },
+        uglify: {
+            options: {
+                mangle: false
+            },
+            my_target: {
+                files: {
+                    'dist/assets/js/app.min.js': ['src/assets/js/*.js']
+                }
+            }
         }
     });
 
-    grunt.registerTask("default", ["processhtml", "concat", "copy"]);
+    grunt.registerTask("default", ["processhtml", "concat", 'uglify', "copy"]);
 };
