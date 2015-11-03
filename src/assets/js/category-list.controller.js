@@ -1,13 +1,13 @@
 (function () {
-   'use strict';
+    'use strict';
 
     angular
         .module('restApiDemo')
         .controller('CategoryListController', ['$scope', 'TermService', CategoryListController]);
 
     function CategoryListController($scope, TermService) {
-        TermService.getCategories().success(function (response) {
-            $scope.items = response;
+        TermService.getCategories().then(function (response) {
+            $scope.items = response.data;
         });
     }
 })();

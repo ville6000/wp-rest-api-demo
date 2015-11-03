@@ -16,12 +16,12 @@
         }, true);
 
         if (typeof $routeParams.s !== 'undefined') {
-            PostService.searchPosts($routeParams.s).success(function (response) {
-                $scope.posts = response;
+            PostService.searchPosts($routeParams.s).then(function (response) {
+                $scope.posts = response.data;
             });
         } else if (typeof $routeParams.slug !== 'undefined') {
-            PostService.getPostsByCategory($routeParams.slug).success(function (response) {
-                $scope.posts = response;
+            PostService.getPostsByCategory($routeParams.slug).then(function (response) {
+                $scope.posts = response.data;
             });
         }
     }

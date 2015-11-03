@@ -6,8 +6,8 @@
         .controller('PostsListController', ['$scope', 'PostService', PostsListController]);
 
     function PostsListController($scope, PostService) {
-        PostService.getPosts().success(function (response) {
-            $scope.posts = response;
+        PostService.getPosts().then(function (response) {
+            $scope.posts = response.data;
         });
     }
 })();
