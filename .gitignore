@@ -1,5 +1,4 @@
 .idea
-src/assets/bower_components
 src/analytics.html
 dist
 node_modules
