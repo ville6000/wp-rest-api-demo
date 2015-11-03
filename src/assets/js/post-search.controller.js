@@ -15,8 +15,14 @@
             $scope.searchMade = true;
         }, true);
 
-        PostService.searchPosts($routeParams.s).success(function (response) {
-            $scope.posts = response;
-        });
+        if (typeof $routeParams.s !== 'undefined') {
+            PostService.searchPosts($routeParams.s).success(function (response) {
+                $scope.posts = response;
+            });
+        } else if (typeof $routeParams.slug !== 'undefined') {
+            PostService.getPostsByCategory($routeParams.slug).success(function (response) {
+                $scope.posts = response;
+            });
+        }
     }
 })();

@@ -24,6 +24,14 @@
             });
         };
 
+        API.getPostsByCategory = function (slug) {
+            return $http({
+                method: 'GET',
+                url:    REST_API_PATH + 'posts?filter[category_name]=' + slug,
+                cache:  true
+            });
+        };
+
         API.searchPosts = function (term) {
             return $http({
                 method: 'GET',

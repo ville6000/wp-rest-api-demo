@@ -54,8 +54,10 @@
                     <h2>Categories</h2>
                     <ul class="taxonomy-list">
                         <li ng-repeat="item in items">
-                            {{item.name}}
-                            <span class="count">({{item.count}})</span>
+                            <a ng-href="#/category/{{item.slug}}">
+                                {{item.name}}
+                                <span class="count">({{item.count}})</span>
+                            </a>
                         </li>
                     </ul>
                 </section>

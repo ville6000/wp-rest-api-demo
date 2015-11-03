@@ -23,6 +23,11 @@
                 controller:   'PostsSearchController',
                 controllerAs: 'PostSearchCtrl'
             })
+            .when('/category/:slug', {
+                templateUrl:  'assets/templates/post-list.html',
+                controller:   'PostsSearchController',
+                controllerAs: 'PostListCtrl'
+            })
             .otherwise('/');
     }
 })();
