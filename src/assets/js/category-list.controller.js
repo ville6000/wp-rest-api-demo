@@ -7,7 +7,7 @@
 
     function CategoryListController($scope, TermService) {
         TermService.getCategories().then(function (response) {
-            $scope.items = response.data;
+            $scope.items = TermService.makeTree(response.data, 0);
         });
     }
 })();

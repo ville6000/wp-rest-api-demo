@@ -57,6 +57,15 @@
                             <a ng-href="#/category/{{item.slug}}">
                                 {{item.name}}
                                 <span class="count">({{item.count}})</span>
+
+                                <ul class="taxonomy-list-children" ng-if="item.children">
+                                    <li ng-repeat="itemChild in item.children">
+                                        <a ng-href="#/category/{{itemChild.slug}}">
+                                            {{itemChild.name}}
+                                            <span class="count">({{itemChild.count}})</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </a>
                         </li>
                     </ul>

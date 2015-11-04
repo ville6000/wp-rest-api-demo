@@ -16,6 +16,30 @@
             });
         };
 
+        /**
+         * Make parent - child tree from terms
+         *
+         * @param {Array} terms
+         * @param {int} parent
+         * @returns {{}}
+         */
+        API.makeTree = function (terms, parent) {
+            var node = {},
+                children;
+
+            terms
+                .filter(function (t) {
+                    return t.parent === parent
+                })
+                .forEach(function (t) {
+                    children = API.makeTree(terms, t.id);
+                    t['children'] = (Object.keys(children).length > 0) ? children : false;
+                    node[t.id] = t;
+                });
+
+            return node;
+        };
+
         return API;
     }
 })();
