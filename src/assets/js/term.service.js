@@ -11,7 +11,7 @@
         API.getCategories = function () {
             return $http({
                 method: 'GET',
-                url:    REST_API_PATH + 'terms/category',
+                url:    REST_API_PATH + 'categories',
                 cache:  true
             });
         };
